@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type='button'] {
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="myscore">question</p>
+    <p id="myques">question</p>
+    <form name="myform">
+        <input name="opt1" type="button" value="opt1" onclick="checkans(1)"><br>
+        <input name="opt2" type="button" value="opt2" onclick="checkans(2)"><br>
+        <input name="opt3" type="button" value="opt3" onclick="checkans(3)"><br>
+        <input name="opt4" type="button" value="opt4" onclick="checkans(4)"><br>
+        <input name="btnnext" type="button" value="next" onclick="increaseques()"><br>
+    </form>
+    <script>
+        question = [
+            ["when was mukesh kayastha was death?", "2002", "2005", "2023", "2050", "3"],
+            ["who is father of the nation?", "ram", "2005", "2023", "2050", "3"],
+            ["what country has the highest life expectancy?", "monaco", "nepal", "india", "china", "1"],
+            ["which language has the more native speakers?","spanish","hindi","arabic","chinese","4"],
+        ]
+
+        a = 0;
+        score = 0;
+        loadquestion();
+
+        function loadquestion() {
+            document.getElementById('myscore').innerHTML = "Score: " + score;
+            document.getElementById('myques').innerHTML = question[a][0];
+            myform.opt1.value = "1. " + question[a][1];
+            myform.opt2.value = "2. " + question[a][2];
+            myform.opt3.value = "3. " + question[a][3];
+            myform.opt4.value = "4. " + question[a][4];
+        }
+
+        function increaseques() {
+            a = a + 1;
+            loadquestion();
+        }
+
+        function checkans(abs) {
+            if (abs == question[a][5]) {
+                alert("Right answer!");
+                score = score + 10;
+                document.getElementById('myscore').innerHTML = "Score: " + score;
+            } else {
+                alert("Wrong answer!");
+            }
+        }
+    </script>
+</body>
+
+</html>
